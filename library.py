@@ -9,7 +9,9 @@ books = [
 # 1.1 TODO: Create a function named 'available_books' to print the books list -- one book title on each line
 # Parameters: Not needed for this function
 # Return: Not needed for this function
-
+def available_books():
+    for book in books:
+        print(book)
 
 # 1.2 TODO: Run the 'available_books' function
 
@@ -18,7 +20,12 @@ print('-----------------------')
 # 1.3 TODO: Create a function named 'check_out' that removes a book from the books list
 # Parameters: book_title (string)
 # Return: Not needed for this function
-
+def check_out(book_title):
+    try:
+        if book_title in books:
+            books.remove(book_title)
+    except ValueError: 
+        print("ValuError")
 
 # 1.4 TODO: Check out 'THE POWER OF MOMENTS' using the check_out function
 
@@ -30,7 +37,8 @@ print('-----------------------')
 # 1.6 TODO: Create a function 'check_in' that adds a book to the end of the books list
 # Parameters: book_title (string)
 # Return: Not needed for this function
-
+def check_in(book_title):
+    books.append(book_title)
 
 # 1.7 TODO: Check in 'THE POWER OF MOMENTS' using the check_in function
 
@@ -42,7 +50,11 @@ print('-----------------------')
 # 1.9 TODO: Create a function 'search_by_name' that prints 'Available' if exists in books list, 'Not Available' if it doesn't.
 # Parameters: book_title (string)
 # Return: Not needed for this function
-
+def search_by_name(book_title):
+    if book_title in books:
+        print("Available")
+    else:
+        print("Not Available")
 
 # 1.10 TODO: Search for the book 'JUST MERCY'
 
@@ -124,12 +136,18 @@ books_with_details = [
 
 # 2.0 TODO: In a comment, describe the structure of the data in books_with_details.
 # What types of data are nested within others? How do you know?
-
+# dictionaries within a list and each dictionary has three different keys: title, author, and description
+# I know dictionaries are within a list because the entire data are surrounded by brackets so it's a list, but 
+# the data inside are surrounded by curly braces so I know they are dictionaries with key value pairs inside them.
 
 # 2.1 TODO: Create a function called 'count_books' that returns the number of books in the books_with_details list
 # Parameters: Not needed for this function
 # Return: number of books (integer)
-
+def count_books():
+    count = 0
+    for book in books_with_details:
+        count += 1
+    return count
 
 # 2.2 TODO: Check the number of books available in the books list using the `count_books` function
 # HINT: Does `return` print anything out?
@@ -139,7 +157,12 @@ books_with_details = [
 # Parameters - author (string)
 # Return - author's books (list of strings)
 # Hint - You will need a for loop, if statement, and .append() for this solution!
-
+def search_by_author(author):
+    authors = []
+    for book in books_with_details:
+        if book["author"] == author:
+            authors.append(book["title"])
+    return authors
 
 # 2.4 TODO: Search for book titles by the author 'Yuval Noah Harari' using the search_by_author function
 # HINT: Remember again-- return doesn't print anything out. How can we print the output of the function?
